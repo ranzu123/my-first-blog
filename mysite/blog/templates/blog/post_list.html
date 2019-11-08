@@ -6,20 +6,16 @@
 
 <body>
     <h1>Django admin site</h1>
+    {% for post in posts %}
     <div>
-        <p>published: 14.06.2014, 12:14</p>
-        <h2><a href="">My first post</a></h2>
-        <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta
-            gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum
-            massa justo sit amet risus.</p>
+        <p>published: {{ post.published_date }}</p>
+        <h2><a href="">{{ post.title }}My first post</a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
     </div>
+    {% endfor %}
 
-    <div>
-        <p>published: 14.06.2014, 12:14</p>
-        <h2><a href="">My second post</a></h2>
-        <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta
-            gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
-    </div>
+
+
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis blanditiis, quibusdam esse placeat, labore, soluta
         libero ipsa vitae quis suscipit ipsum reiciendis laboriosam? Nemo aut, doloribus officiis cum earum quasi.</p>
     <p>The Django admin site¶
