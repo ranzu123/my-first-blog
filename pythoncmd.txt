@@ -1,0 +1,9 @@
+ /c/Users/Ranju Dhungana/AppData/Local/Programs/Python/Python36/python
+
+ alias python='winpty python'
+
+  participant = {'name': 'Ola', 'country': 'Poland', 'favorite_numbers': [7, 42, 92]}
+
+  username:ranju
+  email:dhunganaranju45@gmail.com
+  passwoard:ranju123
