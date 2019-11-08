@@ -1,34 +1,38 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
 <html>
 
 <head>
     <title>DJANGOGIRLS WEBSITES</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 
 <body>
-    <h1>Django admin site</h1>
-    {% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h2><a href="">{{ post.title }}My first post</a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+    <div class="page-header">
+        <h1><a href="/">Django Girls Blog</a></h1>
     </div>
-    {% endfor %}
 
-
-
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis blanditiis, quibusdam esse placeat, labore, soluta
-        libero ipsa vitae quis suscipit ipsum reiciendis laboriosam? Nemo aut, doloribus officiis cum earum quasi.</p>
-    <p>The Django admin site¶
-        One of the most powerful parts of Django is the automatic admin interface. It reads metadata from your models to
-        provide a quick, model-centric interface where trusted users can manage content on your site. The admin’s
-        recommended use is limited to an organization’s internal management tool. It’s not intended for building your
-        entire front end around.
-
-        The admin has many hooks for customization, but beware of trying to use those hooks exclusively. If you need to
-        provide a more process-centric interface that abstracts away the implementation details of database tables and
-        fields, then it’s probably time to write your own views.
-
-        In this document we discuss how to activate, use, and customize Django’s admin interface.</p>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                {% block content %}
+                {% for post in posts %}
+                <div class="post">
+                    <div class="date">
+                        {{ post.published_date }}
+                    </div>
+                    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+                {% endfor %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
